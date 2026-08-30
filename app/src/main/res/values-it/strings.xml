@@ -29,6 +29,7 @@
     <string name="setup_start_identification">Avvia identificazione</string>
     <string name="setup_key_detected">Tasto rilevato (scanCode %1$d)</string>
     <string name="setup_save">Salva</string>
+    <string name="setup_key_saved">Salvato</string>
 
     <string name="mapping_title">Azioni</string>
     <string name="mapping_dialog_title">Scegli un\'azione</string>
@@ -42,6 +43,18 @@
     <string name="action_screenshot">Screenshot</string>
     <string name="action_open_app">Apri %1$s</string>
     <string name="action_open_app_picker">Apri un\'app…</string>
+    <string name="action_go_home">Home</string>
+    <string name="action_key_back">Indietro</string>
+    <string name="action_open_recents">App recenti</string>
+    <string name="action_open_notifications">Notifiche</string>
+    <string name="action_open_quick_settings">Impostazioni rapide</string>
+    <string name="action_media_play_pause">Play/pausa media</string>
+    <string name="action_media_next">Traccia successiva</string>
+    <string name="action_media_previous">Traccia precedente</string>
+    <string name="action_volume_up">Volume su</string>
+    <string name="action_volume_down">Volume giù</string>
+    <string name="mapping_section_system">Sistema</string>
+    <string name="mapping_section_media">Media e volume</string>
 
     <string name="app_picker_title">Scegli un\'app</string>
 </resources>

@@ -6,14 +6,18 @@ import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.heightIn
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
+import androidx.compose.foundation.rememberScrollState
+import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.automirrored.filled.ArrowBack
 import androidx.compose.material3.AlertDialog
 import androidx.compose.material3.ElevatedCard
 import androidx.compose.material3.ExperimentalMaterial3Api
+import androidx.compose.material3.HorizontalDivider
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
 import androidx.compose.material3.MaterialTheme
@@ -51,10 +55,24 @@ private fun KeyAction.label(): String = when (this) {
     KeyAction.ToggleFlashlight -> stringResource(R.string.action_flashlight)
     KeyAction.LockScreen -> stringResource(R.string.action_lock_screen)
     KeyAction.TakeScreenshot -> stringResource(R.string.action_screenshot)
+    KeyAction.GoHome -> stringResource(R.string.action_go_home)
+    KeyAction.GoBack -> stringResource(R.string.action_key_back)
+    KeyAction.OpenRecents -> stringResource(R.string.action_open_recents)
+    KeyAction.OpenNotifications -> stringResource(R.string.action_open_notifications)
+    KeyAction.OpenQuickSettings -> stringResource(R.string.action_open_quick_settings)
+    KeyAction.MediaPlayPause -> stringResource(R.string.action_media_play_pause)
+    KeyAction.MediaNext -> stringResource(R.string.action_media_next)
+    KeyAction.MediaPrevious -> stringResource(R.string.action_media_previous)
+    KeyAction.VolumeUp -> stringResource(R.string.action_volume_up)
+    KeyAction.VolumeDown -> stringResource(R.string.action_volume_down)
     is KeyAction.OpenApp -> stringResource(R.string.action_open_app, label)
 }
 
-private enum class ActionOption { DISABLED, FLASHLIGHT, LOCK_SCREEN, SCREENSHOT, OPEN_APP }
+private enum class ActionOption {
+    DISABLED, OPEN_APP,
+    GO_HOME, GO_BACK, OPEN_RECENTS, OPEN_NOTIFICATIONS, OPEN_QUICK_SETTINGS, LOCK_SCREEN, SCREENSHOT, FLASHLIGHT,
+    MEDIA_PLAY_PAUSE, MEDIA_NEXT, MEDIA_PREVIOUS, VOLUME_UP, VOLUME_DOWN
+}
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
@@ -106,12 +124,27 @@ fun MappingScreen(
             onDismiss = { gestureForDialog = null },
             onSelect = { option ->
                 gestureForDialog = null
-                when (option) {
-                    ActionOption.DISABLED -> scope.launch { repository.setMapping(gesture, KeyAction.Disabled) }
-                    ActionOption.FLASHLIGHT -> scope.launch { repository.setMapping(gesture, KeyAction.ToggleFlashlight) }
-                    ActionOption.LOCK_SCREEN -> scope.launch { repository.setMapping(gesture, KeyAction.LockScreen) }
-                    ActionOption.SCREENSHOT -> scope.launch { repository.setMapping(gesture, KeyAction.TakeScreenshot) }
-                    ActionOption.OPEN_APP -> onPickApp(gesture)
+                val newAction = when (option) {
+                    ActionOption.DISABLED -> KeyAction.Disabled
+                    ActionOption.OPEN_APP -> null
+                    ActionOption.GO_HOME -> KeyAction.GoHome
+                    ActionOption.GO_BACK -> KeyAction.GoBack
+                    ActionOption.OPEN_RECENTS -> KeyAction.OpenRecents
+                    ActionOption.OPEN_NOTIFICATIONS -> KeyAction.OpenNotifications
+                    ActionOption.OPEN_QUICK_SETTINGS -> KeyAction.OpenQuickSettings
+                    ActionOption.LOCK_SCREEN -> KeyAction.LockScreen
+                    ActionOption.SCREENSHOT -> KeyAction.TakeScreenshot
+                    ActionOption.FLASHLIGHT -> KeyAction.ToggleFlashlight
+                    ActionOption.MEDIA_PLAY_PAUSE -> KeyAction.MediaPlayPause
+                    ActionOption.MEDIA_NEXT -> KeyAction.MediaNext
+                    ActionOption.MEDIA_PREVIOUS -> KeyAction.MediaPrevious
+                    ActionOption.VOLUME_UP -> KeyAction.VolumeUp
+                    ActionOption.VOLUME_DOWN -> KeyAction.VolumeDown
+                }
+                if (newAction != null) {
+                    scope.launch { repository.setMapping(gesture, newAction) }
+                } else {
+                    onPickApp(gesture)
                 }
             }
         )
@@ -125,15 +158,44 @@ private fun ActionPickerDialog(onDismiss: () -> Unit, onSelect: (ActionOption) -
         title = { Text(stringResource(R.string.mapping_dialog_title)) },
         confirmButton = {},
         text = {
-            Column {
+            Column(
+                modifier = Modifier
+                    .heightIn(max = 420.dp)
+                    .verticalScroll(rememberScrollState())
+            ) {
                 DialogOption(stringResource(R.string.action_none)) { onSelect(ActionOption.DISABLED) }
-                DialogOption(stringResource(R.string.action_flashlight)) { onSelect(ActionOption.FLASHLIGHT) }
+                DialogOption(stringResource(R.string.action_open_app_picker)) { onSelect(ActionOption.OPEN_APP) }
+
+                SectionLabel(stringResource(R.string.mapping_section_system))
+                DialogOption(stringResource(R.string.action_go_home)) { onSelect(ActionOption.GO_HOME) }
+                DialogOption(stringResource(R.string.action_key_back)) { onSelect(ActionOption.GO_BACK) }
+                DialogOption(stringResource(R.string.action_open_recents)) { onSelect(ActionOption.OPEN_RECENTS) }
+                DialogOption(stringResource(R.string.action_open_notifications)) { onSelect(ActionOption.OPEN_NOTIFICATIONS) }
+                DialogOption(stringResource(R.string.action_open_quick_settings)) { onSelect(ActionOption.OPEN_QUICK_SETTINGS) }
                 DialogOption(stringResource(R.string.action_lock_screen)) { onSelect(ActionOption.LOCK_SCREEN) }
                 DialogOption(stringResource(R.string.action_screenshot)) { onSelect(ActionOption.SCREENSHOT) }
-                DialogOption(stringResource(R.string.action_open_app_picker)) { onSelect(ActionOption.OPEN_APP) }
+                DialogOption(stringResource(R.string.action_flashlight)) { onSelect(ActionOption.FLASHLIGHT) }
+
+                SectionLabel(stringResource(R.string.mapping_section_media))
+                DialogOption(stringResource(R.string.action_media_play_pause)) { onSelect(ActionOption.MEDIA_PLAY_PAUSE) }
+                DialogOption(stringResource(R.string.action_media_next)) { onSelect(ActionOption.MEDIA_NEXT) }
+                DialogOption(stringResource(R.string.action_media_previous)) { onSelect(ActionOption.MEDIA_PREVIOUS) }
+                DialogOption(stringResource(R.string.action_volume_up)) { onSelect(ActionOption.VOLUME_UP) }
+                DialogOption(stringResource(R.string.action_volume_down)) { onSelect(ActionOption.VOLUME_DOWN) }
             }
         }
     )
+}
+
+@Composable
+private fun SectionLabel(text: String) {
+    Text(
+        text = text,
+        style = MaterialTheme.typography.labelMedium,
+        color = MaterialTheme.colorScheme.primary,
+        modifier = Modifier.padding(top = 8.dp, bottom = 4.dp)
+    )
+    HorizontalDivider()
 }
 
 @Composable

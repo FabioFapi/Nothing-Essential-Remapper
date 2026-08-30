@@ -23,12 +23,15 @@ import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Scaffold
+import androidx.compose.material3.SnackbarHost
+import androidx.compose.material3.SnackbarHostState
 import androidx.compose.material3.Text
 import androidx.compose.material3.TextButton
 import androidx.compose.material3.TopAppBar
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
+import androidx.compose.runtime.remember
 import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalContext
@@ -50,8 +53,11 @@ fun SetupScreen(repository: KeyMappingRepository, onBack: () -> Unit) {
     val scope = rememberCoroutineScope()
     val isLearning by EssentialKeyBus.isLearning.collectAsState()
     val detectedScanCode by EssentialKeyBus.learnedScanCode.collectAsState()
+    val snackbarHostState = remember { SnackbarHostState() }
+    val savedMessage = stringResource(R.string.setup_key_saved)
 
     Scaffold(
+        snackbarHost = { SnackbarHost(snackbarHostState) },
         topBar = {
             TopAppBar(
                 title = { Text(stringResource(R.string.setup_title)) },
@@ -109,7 +115,10 @@ fun SetupScreen(repository: KeyMappingRepository, onBack: () -> Unit) {
                     Spacer(modifier = Modifier.height(8.dp))
                     Text(stringResource(R.string.setup_key_detected, code))
                     Button(onClick = {
-                        scope.launch { repository.setLearnedScanCode(code) }
+                        scope.launch {
+                            repository.setLearnedScanCode(code)
+                            snackbarHostState.showSnackbar(savedMessage)
+                        }
                     }) {
                         Text(stringResource(R.string.setup_save))
                     }

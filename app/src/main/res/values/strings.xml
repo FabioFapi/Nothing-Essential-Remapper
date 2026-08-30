@@ -29,6 +29,7 @@
     <string name="setup_start_identification">Start identification</string>
     <string name="setup_key_detected">Key detected (scan code %1$d)</string>
     <string name="setup_save">Save</string>
+    <string name="setup_key_saved">Saved</string>
 
     <string name="mapping_title">Actions</string>
     <string name="mapping_dialog_title">Choose an action</string>
@@ -42,6 +43,18 @@
     <string name="action_screenshot">Screenshot</string>
     <string name="action_open_app">Open %1$s</string>
     <string name="action_open_app_picker">Open an app…</string>
+    <string name="action_go_home">Home</string>
+    <string name="action_key_back">Back</string>
+    <string name="action_open_recents">Recent apps</string>
+    <string name="action_open_notifications">Notifications</string>
+    <string name="action_open_quick_settings">Quick settings</string>
+    <string name="action_media_play_pause">Play/pause media</string>
+    <string name="action_media_next">Next track</string>
+    <string name="action_media_previous">Previous track</string>
+    <string name="action_volume_up">Volume up</string>
+    <string name="action_volume_down">Volume down</string>
+    <string name="mapping_section_system">System</string>
+    <string name="mapping_section_media">Media &amp; volume</string>
 
     <string name="app_picker_title">Choose an app</string>
 </resources>
