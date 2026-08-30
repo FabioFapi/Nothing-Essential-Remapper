@@ -38,7 +38,7 @@ jobs:
           RELEASE_KEY_PASSWORD: ${{ secrets.RELEASE_KEY_PASSWORD }}
         run: |
           mkdir -p keystore
-          echo "$RELEASE_KEYSTORE_BASE64" | base64 -d > keystore/release.jks
+          echo "$RELEASE_KEYSTORE_BASE64" | tr -d '[:space:]' | base64 -d > keystore/release.jks
           cat > keystore.properties <<EOF
           storeFile=keystore/release.jks
           storePassword=$RELEASE_STORE_PASSWORD

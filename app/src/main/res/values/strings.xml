@@ -5,6 +5,15 @@
 
     <string name="action_back">Back</string>
 
+    <string name="onboarding_title">Welcome</string>
+    <string name="onboarding_intro_title">What this app does</string>
+    <string name="onboarding_intro_body">It lets you assign custom actions to the Essential Key on your Nothing phone. Single press, double press, triple press and long press can each trigger a different action.</string>
+    <string name="onboarding_pc_title">You will need a PC (once)</string>
+    <string name="onboarding_pc_body">To fully take over the key, setup requires running two ADB commands from a computer, or via wireless debugging — just once. After that, everything runs on the phone.</string>
+    <string name="onboarding_how_title">How it works</string>
+    <string name="onboarding_how_body">Once set up, you pick an action for each gesture: open an app, toggle the flashlight, control media playback, and more.</string>
+    <string name="onboarding_cta">Get started</string>
+
     <string name="home_title">Essential Key Remapper</string>
     <string name="home_status_accessibility_title">Accessibility service</string>
     <string name="home_status_active">Active</string>
@@ -57,4 +66,6 @@
     <string name="mapping_section_media">Media &amp; volume</string>
 
     <string name="app_picker_title">Choose an app</string>
+    <string name="app_picker_search_hint">Search apps</string>
+    <string name="app_picker_clear_search">Clear search</string>
 </resources>

@@ -5,6 +5,15 @@
 
     <string name="action_back">Indietro</string>
 
+    <string name="onboarding_title">Benvenuto</string>
+    <string name="onboarding_intro_title">Cosa fa questa app</string>
+    <string name="onboarding_intro_body">Ti permette di assegnare azioni personalizzate all\'Essential Key del tuo telefono Nothing. Pressione singola, doppia, tripla e lunga possono avere ognuna un\'azione diversa.</string>
+    <string name="onboarding_pc_title">Ti servirà un PC (una volta sola)</string>
+    <string name="onboarding_pc_body">Per prendere il controllo completo del tasto, il setup richiede di eseguire due comandi ADB da un computer, oppure via debug wireless — una sola volta. Dopo, tutto funziona dal telefono.</string>
+    <string name="onboarding_how_title">Come funziona</string>
+    <string name="onboarding_how_body">Una volta impostato, scegli un\'azione per ogni gesto: apri un\'app, accendi la torcia, controlla la riproduzione media e altro.</string>
+    <string name="onboarding_cta">Inizia</string>
+
     <string name="home_title">Essential Key Remapper</string>
     <string name="home_status_accessibility_title">Servizio di accessibilità</string>
     <string name="home_status_active">Attivo</string>
@@ -57,4 +66,6 @@
     <string name="mapping_section_media">Media e volume</string>
 
     <string name="app_picker_title">Scegli un\'app</string>
+    <string name="app_picker_search_hint">Cerca app</string>
+    <string name="app_picker_clear_search">Cancella ricerca</string>
 </resources>

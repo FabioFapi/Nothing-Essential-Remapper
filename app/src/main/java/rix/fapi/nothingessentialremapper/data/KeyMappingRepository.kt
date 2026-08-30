@@ -1,6 +1,7 @@
 package rix.fapi.nothingessentialremapper.data
 
 import android.content.Context
+import androidx.datastore.preferences.core.booleanPreferencesKey
 import androidx.datastore.preferences.core.edit
 import androidx.datastore.preferences.core.intPreferencesKey
 import androidx.datastore.preferences.core.stringPreferencesKey
@@ -19,9 +20,17 @@ private val Context.dataStore by preferencesDataStore(name = "essential_key_sett
 class KeyMappingRepository(private val context: Context) {
 
     private val scanCodeKey = intPreferencesKey("learned_scan_code")
+    private val onboardingCompletedKey = booleanPreferencesKey("onboarding_completed")
     private fun mappingKey(gesture: GestureType) = stringPreferencesKey("mapping_${gesture.name}")
 
     val learnedScanCode: Flow<Int?> = context.dataStore.data.map { prefs -> prefs[scanCodeKey] }
+
+    val isOnboardingCompleted: Flow<Boolean> =
+        context.dataStore.data.map { prefs -> prefs[onboardingCompletedKey] ?: false }
+
+    suspend fun setOnboardingCompleted(completed: Boolean) {
+        context.dataStore.edit { it[onboardingCompletedKey] = completed }
+    }
 
     suspend fun setLearnedScanCode(scanCode: Int) {
         context.dataStore.edit { it[scanCodeKey] = scanCode }
