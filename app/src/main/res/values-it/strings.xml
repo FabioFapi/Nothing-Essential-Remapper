@@ -1,0 +1,47 @@
+<resources>
+    <string name="app_name">Nothing Essential Remapper</string>
+    <string name="accessibility_service_label">Essential Key Remapper</string>
+    <string name="accessibility_service_description">Osserva la pressione dell\'Essential Key per assegnargli azioni personalizzate. Non legge il contenuto dello schermo.</string>
+
+    <string name="action_back">Indietro</string>
+
+    <string name="home_title">Essential Key Remapper</string>
+    <string name="home_status_accessibility_title">Servizio di accessibilità</string>
+    <string name="home_status_active">Attivo</string>
+    <string name="home_status_inactive">Non attivo</string>
+    <string name="home_status_key_title">Tasto Essential Key</string>
+    <string name="home_status_key_identified">Identificato (scanCode %1$d)</string>
+    <string name="home_status_key_not_identified">Non ancora identificato</string>
+    <string name="home_button_setup">Vai al setup</string>
+    <string name="home_button_mapping">Configura le azioni</string>
+
+    <string name="setup_title">Setup</string>
+    <string name="setup_step1_title">Disabilita le app di sistema</string>
+    <string name="setup_step1_description">Collega il telefono a un PC con ADB (o usa il debug wireless) ed esegui questi comandi. Vanno eseguiti una sola volta.</string>
+    <string name="setup_copy">Copia</string>
+    <string name="setup_step2_title">Attiva il servizio di accessibilità</string>
+    <string name="setup_step2_description">Apri le impostazioni di accessibilità e attiva \"Essential Key Remapper\".</string>
+    <string name="setup_open_settings">Apri impostazioni</string>
+    <string name="setup_step3_title">Identifica il tasto</string>
+    <string name="setup_step3_description_listening">Premi ora l\'Essential Key sul telefono…</string>
+    <string name="setup_step3_description_idle">Premi il pulsante qui sotto, poi premi l\'Essential Key sul telefono.</string>
+    <string name="setup_listening">In ascolto…</string>
+    <string name="setup_start_identification">Avvia identificazione</string>
+    <string name="setup_key_detected">Tasto rilevato (scanCode %1$d)</string>
+    <string name="setup_save">Salva</string>
+
+    <string name="mapping_title">Azioni</string>
+    <string name="mapping_dialog_title">Scegli un\'azione</string>
+    <string name="gesture_single_press">Pressione singola</string>
+    <string name="gesture_double_press">Doppia pressione</string>
+    <string name="gesture_triple_press">Tripla pressione</string>
+    <string name="gesture_long_press">Pressione lunga</string>
+    <string name="action_none">Nessuna azione</string>
+    <string name="action_flashlight">Torcia</string>
+    <string name="action_lock_screen">Blocca schermo</string>
+    <string name="action_screenshot">Screenshot</string>
+    <string name="action_open_app">Apri %1$s</string>
+    <string name="action_open_app_picker">Apri un\'app…</string>
+
+    <string name="app_picker_title">Scegli un\'app</string>
+</resources>

@@ -1,0 +1,47 @@
+<resources>
+    <string name="app_name">Nothing Essential Remapper</string>
+    <string name="accessibility_service_label">Essential Key Remapper</string>
+    <string name="accessibility_service_description">Watches for Essential Key presses so you can assign it custom actions. It does not read what is on your screen.</string>
+
+    <string name="action_back">Back</string>
+
+    <string name="home_title">Essential Key Remapper</string>
+    <string name="home_status_accessibility_title">Accessibility service</string>
+    <string name="home_status_active">Active</string>
+    <string name="home_status_inactive">Not active</string>
+    <string name="home_status_key_title">Essential Key</string>
+    <string name="home_status_key_identified">Identified (scan code %1$d)</string>
+    <string name="home_status_key_not_identified">Not identified yet</string>
+    <string name="home_button_setup">Go to setup</string>
+    <string name="home_button_mapping">Configure actions</string>
+
+    <string name="setup_title">Setup</string>
+    <string name="setup_step1_title">Disable the system apps</string>
+    <string name="setup_step1_description">Connect the phone to a PC with ADB (or use wireless debugging) and run these commands. They only need to be run once.</string>
+    <string name="setup_copy">Copy</string>
+    <string name="setup_step2_title">Enable the accessibility service</string>
+    <string name="setup_step2_description">Open accessibility settings and enable \"Essential Key Remapper\".</string>
+    <string name="setup_open_settings">Open settings</string>
+    <string name="setup_step3_title">Identify the key</string>
+    <string name="setup_step3_description_listening">Press the Essential Key on the phone now…</string>
+    <string name="setup_step3_description_idle">Press the button below, then press the Essential Key on the phone.</string>
+    <string name="setup_listening">Listening…</string>
+    <string name="setup_start_identification">Start identification</string>
+    <string name="setup_key_detected">Key detected (scan code %1$d)</string>
+    <string name="setup_save">Save</string>
+
+    <string name="mapping_title">Actions</string>
+    <string name="mapping_dialog_title">Choose an action</string>
+    <string name="gesture_single_press">Single press</string>
+    <string name="gesture_double_press">Double press</string>
+    <string name="gesture_triple_press">Triple press</string>
+    <string name="gesture_long_press">Long press</string>
+    <string name="action_none">No action</string>
+    <string name="action_flashlight">Flashlight</string>
+    <string name="action_lock_screen">Lock screen</string>
+    <string name="action_screenshot">Screenshot</string>
+    <string name="action_open_app">Open %1$s</string>
+    <string name="action_open_app_picker">Open an app…</string>
+
+    <string name="app_picker_title">Choose an app</string>
+</resources>
